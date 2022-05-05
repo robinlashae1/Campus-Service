@@ -25,11 +25,11 @@ function SchoolPage({schoolList,setLoginShow,loginShow,user,onLogin,setUsername,
 
     return(
         <div className="schoolPage" style={{overflowX: "hidden"}}>
-            <HomeBanner onLogin={onLogin} user={user} onLogin={onLogin} setUsername={setUsername} setPassword={setPassword} username={username} password={password} setLoginShow={setLoginShow} loginShow={loginShow} user={user} title="ALL SCHOOLS"/>
+            <HomeBanner onLogin={onLogin} user={user} setUsername={setUsername} setPassword={setPassword} username={username} password={password} setLoginShow={setLoginShow} loginShow={loginShow} user={user} title="ALL SCHOOLS"/>
               <SearchBar className="search-bar gapDiv" onChange={handleSearch}/>
               <div className="colleges-center">
               {searchFilter.map(school=>(
-               <div className="collegeContainers">
+               <div className="collegeContainers" key={school.id}>
                 <a href={`/schools/${school.name}`}><img src={school.image_url} alt={school.name} key={school.id}/></a>
               {console.log('ive been fetched')}
               </div>

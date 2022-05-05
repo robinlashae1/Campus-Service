@@ -17,7 +17,7 @@ function Login({onLogin,username,loginDefault,password,setPassword,setUsername,u
   
     function handleLoginSubmit(e) {
       e.preventDefault();
-      fetch("/login", {
+      fetch("http://localhost:3000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ console.log(newIsTech)
       formData.append('password_confirmation', newPasswordConfirmation)
       formData.append('is_tech',newIsTech)
               
-      fetch(`/users`, {
+      fetch(`https://campus-finder.herokuapp.com/api/users`, {
                   method: "POST",
                   body: formData
                   }).then((r) => {

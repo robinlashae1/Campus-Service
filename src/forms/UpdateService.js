@@ -23,7 +23,7 @@ function UpdateService({service,show,id,modalData,handleClose,serviceCategoryLis
             formData.append('school_id', schoolId)
             formData.append("image", selectedFile)
 
-              fetch(`/user_services/${modalData.id}`, {
+              fetch(`https://campus-finder.herokuapp.com/user_services/${modalData.id}`, {
                 method: "PATCH",
                 body: formData
               })
@@ -32,7 +32,7 @@ function UpdateService({service,show,id,modalData,handleClose,serviceCategoryLis
             }
 
     function handleUpdate(id) {
-      fetch(`/user_services/${modalData.id}`, {
+      fetch(`https://campus-finder.herokuapp.com/user_services/${modalData.id}`, {
         method: "PATCH",
         headers: {"Content-Type": "application/json",},
         body: JSON.stringify({

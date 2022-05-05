@@ -10,7 +10,7 @@ function UpdateUserForm({show,handleClose,user}) {
     const [newDescription, setNewDescription]= useState([])
 
     function handleUpdateFile(id) {
-        fetch(`/users/${user.id}`, {
+        fetch(`https://campus-finder.herokuapp.com/users/${user.id}`, {
                     method: "PATCH",
                     headers: {"Content-Type": "application/json",},
                         body: JSON.stringify({

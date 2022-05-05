@@ -8,8 +8,8 @@ import { Route, Switch, BrowserRouter} from "react-router-dom";
 import About from './pages/About';
 import Rescue from './pages/Rescue';
 import Login from './forms/Login';
-import NavBar from './bars/NavBar';
-import HomeBanner from './bars/HomeBanner';
+// import NavBar from './bars/NavBar';
+// import HomeBanner from './bars/HomeBanner';
 import TechProfilePage from './pages/TechProfilePage';
 import AllTechsPage from './pages/AllTechsPage';
 import PersonalProfilePage from './pages/PersonalProfilePage';
@@ -26,25 +26,48 @@ function App(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginShow, setLoginShow] = useState(false)
+//   const config = {
+//     url,
+//     headers: {
+//      'Access-Control-Allow-Origin' : '*',
+//      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+//      }
+//  }
 
     useEffect(() => {
-        fetch("/user_services")
+        fetch("https://campus-finder.herokuapp.com/api/user_services",{
+          headers: {
+           'Access-Control-Allow-Origin' : '*',
+           'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+           }})
         .then((r) => r.json())
         .then((userService) => setUserServiceList(userService))
       }, []);
       useEffect(() => {
-        fetch("/service_categories")
+        fetch("https://campus-finder.herokuapp.com/api/service_categories",{
+          headers: {
+           'Access-Control-Allow-Origin' : '*',
+           'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+           }})
         .then((r) => r.json())
         .then((serviceCategory) => setServiceCategoryList(serviceCategory))
       }, []);
       useEffect(() => {
-        fetch("/schools")
+        fetch("https://campus-finder.herokuapp.com/api/schools",{
+        headers: {
+         'Access-Control-Allow-Origin' : '*',
+         'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+         }})
         .then((r) => r.json())
         .then((schools) => setschoolList(schools))
     }, []);
   
   useEffect(() => {
-    fetch("/me").then((response) => {
+    fetch("https://campus-finder.herokuapp.com/api/me",{
+      headers: {
+       'Access-Control-Allow-Origin' : '*',
+       'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+       }}).then((response) => {
       if (response.ok) {
         response.json()
         .then((user) => setUser(user));
@@ -53,20 +76,29 @@ function App(){
   }, []);
 
     useEffect(() => {
-        fetch("/services")
+        fetch("https://campus-finder.herokuapp.com/api/services",{
+          headers: {
+           'Access-Control-Allow-Origin' : '*',
+           'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+           }})
         .then((r) => r.json())
         .then((services) => setServicesList(services))
       }, []);
 
       function handleDelete(id) {
-        fetch(`/user_services/${id}`, {
+        fetch(`https://campus-finder.herokuapp.com/api/user_services/${id}`,{
+          headers: {
+           'Access-Control-Allow-Origin' : '*',
+           'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+           }}, {
             method: 'DELETE',
         }).then((r) => {
             if (r.ok) {
               setUserServiceList((services) =>
                 services.filter((services) => services.id !== id)
                 );}})}
-  
+
+  console.log(userServiceList)
   return(
     <div className='App'>
       <BrowserRouter>

@@ -26,7 +26,7 @@ function CreateServiceForm({setCreateModalShow,setShow,show,handleClose,serviceC
         formData.append('school_id', schoolId)
         formData.append('image', selectedFile)
 
-        fetch(`/user_services`, {
+        fetch(`https://campus-finder.herokuapp.com/api/user_services`, {
           method: "POST",
           // headers: {
           //   "Content-Type": "application/json",
