@@ -1,5 +1,6 @@
 {
   "name": "campus-front",
+  "homepage": "https://main--campus-services.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
